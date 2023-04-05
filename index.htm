@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List App</title>
+    <!--bootstrap icon-->
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: none;
+            box-shadow: grey 2px 3px 3px 2px;
+            width: 40%;
+            min-width: 450px;
+            height: 100%;
+            min-height: 100px;
+            transform: translate(-50%, -50%);
+            background-color: rgb(126, 216, 211);
+            opacity: calc(5);
+            overflow: auto;
+        }
+        
+        h1 {
+            position: relative;
+            background-color: pink;
+            color: white;
+            border: none;
+            border-radius: 25%;
+            text-align: center;
+            transform: scale(20px, 50px);
+            font-size: 40px;
+            text-align: center;
+            font-weight: 2px bold;
+            padding: 2px;
+            margin-top: 20px;
+            box-shadow: rgb(36, 29, 29) 2px 2px 3px;
+        }
+        
+        #task {
+            position: relative;
+            padding: 20px;
+        }
+        
+        #task input {
+            width: 85%;
+            padding: 10px;
+            border-radius: 12px;
+            border-color: pink;
+        }
+        
+        #task input :focus {
+            outline: rgb(15, 14, 14);
+            border-color: rgb(88, 155, 133)
+        }
+        
+        #addingtask {
+            background-color: rgb(230, 224, 224);
+            padding: 30px 20px;
+            margin-top: 2px;
+            border-radius: 20px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .addingtext {
+            margin: 12px;
+            overflow: hidden;
+            word-spacing: 0.1rem;
+            background-color: rgb(221, 120, 218);
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid pink;
+            cursor: pointer;
+            border-radius: 20px;
+            box-shadow: grey 2px 2px 3px;
+            width: 100%;
+            position: relative;
+        }
+        
+        .addingtext span {
+            font-family: 'poppins', sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: rgb(22, 24, 20);
+        }
+        
+        .addingtext button {
+            background: rgb(153, 0, 255);
+            color: white;
+            height: 100%;
+            width: 40px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+    <script>
+        //var alltask = [];
+        // this is insertClick function to insert data
+        function insertClick() {
+            var addtasks = document.getElementById("insert").value;
+            var taskname = document.getElementById("addtask").value;
+
+
+
+            if (taskname.length == 0) {
+                //alltask.push(addtask);
+                addtasks.innerHTML = alert("please enter the any task");
+                // document.getElementById("addtask").innerHTML = "";
+            } else {
+                document.getElementById("addingtask").innerHTML = document.getElementById("addingtask").innerHTML +
+                    ` 
+                    <div class = "addingtext">
+                        <i class="bi bi-star-fill"></i>
+                        <span id = "tasknames"> ${document.getElementById("addtask").value}
+                            
+
+                </span>
+                <button class="delete" onclick="deleteClick()"> <i class="bi bi-trash-fill"></i> </button> 
+                
+                    </div>
+                    
+            
+                        `; //now action for delete button
+                var currtask = document.querySelectorAll(".delete");
+
+                var count = 0;
+                for (var i = 0; i < currtask.length; i++) {
+                    currtask[i].onclick = function() {
+                        this.parentNode.remove();
+
+                    }
+                    count = currtask.length;
+
+
+                    document.querySelector("#show").innerHTML = count;
+
+                    //document.querySelector("h5")
+
+
+
+                }
+
+
+
+            }
+
+
+        }
+
+        // addingtask.removeChild(currtask[i]);
+        //alert("removed");
+    </script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1> Todo List App
+        </h1>
+        <div class="justify-content-between" id="task">
+            <input type="text" placeholder="Add to be task... " id="addtask">
+            <span>
+               
+        <button style="color:white;background-color:rgb(255, 0, 255);font-size:20px bold;
+                 width:60px;height:45px;border:none;box-shadow:rgb(214, 151, 163) 2px 2px 2px 2px ;" id="insert"
+                  onclick="insertClick()">Add</button> 
+                  <span>task counter is:</span>
+            <span id="show"> </span>
+
+            </span>
+
+        </div>
+        <div id="addingtask"></div>
+
+    </div>
+</body>
+
+</html>
+
+</html>
